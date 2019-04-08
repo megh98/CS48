@@ -1,0 +1,5 @@
+This is the React Source code.
+
+Save changes to Firebase with the following commands:
+  yarn build
+  firebase deploy
