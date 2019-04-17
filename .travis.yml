@@ -3,3 +3,6 @@ matrix:
                 -language: python
                  script: pytest
 
+branches:
+        only:
+                -nathan
