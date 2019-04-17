@@ -1,8 +1,0 @@
-matrix: 
-        include:
-                -language: python
-                 script: pytest
-
-branches:
-        only:
-                -nathan
