@@ -2,4 +2,4 @@ import HelloWorld
 import pytest
 
 def test_hellowolrd():
-    assert HelloWorld() = "Hello World"
+    assert HelloWorld.HelloWorld() == "Hello World!!"
