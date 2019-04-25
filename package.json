@@ -1,0 +1,14 @@
+{
+  "name": "organappzation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "initialize.js",
+  "scripts": {
+    "test": "node initialize.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^5.10.0"
+  }
+}
