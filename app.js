@@ -32,7 +32,7 @@
          
         }
     )
-    var refTestprime = refTest.child('Clubname');
+    var refTestprime = refTest.child('Rating');
     refTestprime.on("value", function(snapshot) {
         console.log(snapshot.val());
     }, function (error) {
