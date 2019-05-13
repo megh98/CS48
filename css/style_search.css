@@ -91,12 +91,31 @@ p {
 }
 
 #display-profile{
-
-  position: absolute;
-  top: 40%;
-  left: 15%;
-
+  padding: 30px;
+  border: 1px solid #ccc;
+  color: #fff;
+  background: #f7c08a;
 }
+
+#display-profile h1{
+  background: rgb(73, 66, 66);
+  padding: 30px;
+  text-align: center;
+  font-size: 40px;
+  /* border: 1px solid #ccc; */
+}
+
+#display-profile p{
+  font-size: 20px;
+  position: relative;
+  text-align: center;
+  padding: 50px;
+}
+
+#display-profile.clubcard{
+  background: #e84118;
+}
+
 
 .search-box:hover > .search-txt{
   width: 240px;

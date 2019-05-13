@@ -1,14 +1,19 @@
 const searchClub = document.querySelector('.search-btn');
 const clubInput = document.querySelector('.search-txt');
-const showcase = document.getElementById("display-profile");
+const showcase = document.getElementById('.display-profile');
 const http = new EasyHTTP;
 
-searchClub.addEventListener('click', addClub);
+searchClub.addEventListener('click', returnResult);
 
-function addClub() {
+function returnResult() {
   const userInput = clubInput.value;
   console.log(userInput);
+  sessionStorage.setItem('clubname', userInput)
+  window.location.href = "search-result.html";
   showProfile(userInput);
+  // Call backend
+  // - backend -> html (include corresponding info)
+  // window.location.href = "search-result.html";
 };
 
 function showProfile(USERINPUT) {
