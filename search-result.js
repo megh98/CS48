@@ -1,18 +1,14 @@
 const showcase = document.getElementById("display-profile");
-const club = sessionStorage.getItem('clubname')
+const club = JSON.parse(sessionStorage.getItem('club'));
 
 
-function showProfile(USERINPUT) {
+function showProfile(userInput,rating, keyword, clubinfo) {
     showcase.innerHTML = `
    
-    <h1> ${USERINPUT}  <\h1>
-    <p> Advisor:  Mr. Haerle - Basketball is a non-competitive way for students who enjoy playing 
-    basketball to meet weekly after school and play a friendly game. Both boys and girls are
-     welcome, including all ability levels. Students learn the importance of teamwork and 
-     good sportsmanship while playing a sport they love!  Basketball is held from January 
-     through March.  <\p>  
+    <h1> ${userInput}  <\h1>
+    <p> The club rating is: ${rating} <\p>  
  
-    <h1> ${USERINPUT}  <\h1>
+    <h1> ${userInput}  <\h1>
     <p> Advisor:  Mrs. Kleinknecht- Seventh and eighth graders who loved Battle of the Books 
     in 6th grade can continue the fun with this reading club that meets once a week during lunc
     h from about January to May. Students form teams of four to six members and choose to read 
@@ -21,7 +17,7 @@ function showProfile(USERINPUT) {
     chools. If you love to read, this is the club for you. <\p>  
 
 
-    <h1> ${USERINPUT}  <\h1>
+    <h1> ${userInput}  <\h1>
     <p> 
     Advisors:  Mrs. Albano & Mr. Michalowski  All students are invited to be a part of the
      Spring Musical. Auditions typically take place in November/December with performances
@@ -35,4 +31,5 @@ function showProfile(USERINPUT) {
 
      `;
 }
-window.showProfile(club);
+
+window.showProfile(club[0],club[1],club[2],club[3]);
