@@ -14,7 +14,7 @@ function returnResult(rating, keyword, clubinfo) {
   clubArray.push(clubinfo);
   
   sessionStorage.setItem('club', JSON.stringify(clubArray));
-  // window.location.href = "search-result.html";
+  window.location.href = "search-result.html";
 };
 
 
