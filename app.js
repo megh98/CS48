@@ -28,8 +28,7 @@ function getClub(userInput) {
   var rating = 0;
   var keyword = "Error";
   var clubinfo;
-  //var firebase = require('firebase');
-  //var serviceAccount = require("./clubselector-2394a-firebase-adminsdk-oc2gl-21c4ff87c9.json");
+
  if (firebase.apps.length === 0) 
  {
       //IF firebase is not connected, then connect
@@ -53,35 +52,7 @@ function getClub(userInput) {
   //Go to the first node in the database
   var ref = db.ref('clubselector-2394a');
 
-
-  // if (firebase.apps.length === 0) {
-  //     var msg = 'didnt connect';
-  //     console.log(msg);
-  // }
-/* 
-ref.child(input1).once('value', function(snapshot) {
-  if (snapshot.exists()) {
-      console.log("doesn't exist");
-  }
-else {
-  console.log("exists");
-  return;
-}
-});
-*/
-  //Go the club's child which has value == userInput
   var refTest = firebase.app().database().ref().child('clubs').child(userInput);
-  /*refTest.update(
-      {
-          Clubname: 'CASTRE',
-          Keyword: 'Hyper',
-          Rating: 10
-       
-      }
-  )
-  */
-
-  //refTestprime points to rating of the club
   var refTestprime = refTest.child('Rating');
 
 
@@ -148,22 +119,13 @@ else {
 
   console.log(clubbool);
   if (clubbool == false) {
-      //console.log("Into false");
        var finalstring;
        finalstring = "Club Title: " + userInput + '</br>' + "Rating: " + rating + '</br>' + "Keyword: " + keyword + '</br>' + "Clubinfo: " + clubinfo + '</br>';
-       //return finalstring;
-       //console.msg("poo");
        returnResult(rating,keyword,clubinfo);
        return;
   }
   else {
     return clubnoexist;
   }
-
-  //catch(e) {
-  //}
-   //try {
-      
-  //}
  
 }
