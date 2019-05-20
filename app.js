@@ -2,13 +2,13 @@ const searchClub = document.querySelector('.search-btn');
 const clubInput = document.querySelector('.search-txt');
 // console.log(userInput);
 console.log("HI");
-searchClub.addEventListener('click', returnResult);
+searchClub.addEventListener('click', getClub);
 
-function returnResult(rating, keyword, clubinfo) {
+function returnResult(userInput,rating, keyword, clubinfo) {
   var clubArray = new Array();
   console.log("Before userInput in returnResult");
-  const userInput = clubInput.value;
-  console.log(userInput);
+  
+  //console.log(userInput);
   clubArray.push(userInput);
   clubArray.push(rating);
   console.log(rating);
@@ -23,7 +23,10 @@ function returnResult(rating, keyword, clubinfo) {
 };
 
 
-function getClub(userInput) {
+
+
+async function getClub() {
+  const userInput = clubInput.value;
   console.log(userInput);
   var rating = 0;
   var keyword = "Error";
@@ -62,7 +65,35 @@ function getClub(userInput) {
   var clubnoexist;
   clubnoexist = "Club doesn't exist" + '</br>';
 
-  
+  var snapshot = await refTestprime.once('value');
+
+  if(snapshot.exists()) {
+    rating = snapshot.val();
+  }
+  else {
+    clubbool = true;
+    rating = 1;
+  }
+/*
+  refTestprime.once
+  (
+      "value").then(function(snapshot) {
+          console.log("check to" + snapshot.exists());
+          if (snapshot.val() == null) {
+              clubbool = true;
+              console.log("doesn't exist");
+              return clubnoexist;
+          }  
+          else {
+              console.log(snapshot.val());
+              rating = snapshot.val();
+          }
+      }, 
+      function (error) {
+          console.log("Error: " + error.code);
+      }
+  );
+
 
   refTestprime.on
   (
@@ -82,9 +113,20 @@ function getClub(userInput) {
           console.log("Error: " + error.code);
       }
   );
-
+  
+*/
   var refTestprime = refTest.child('Keywords').child('Keyword');
   
+  var snapshot = await refTestprime.once('value');
+
+  if(snapshot.exists()) {
+    keyword = snapshot.val();
+  }
+  else {
+    clubbool = true;
+    keyword = "poo";
+  }
+/*
   refTestprime.on(
       "value", function(snapshot) {
           if (snapshot.val() == null) {
@@ -99,9 +141,21 @@ function getClub(userInput) {
           console.log("Error: " + error.code);
       }
   );
+*/
+
 
   var refTestprime = refTest.child('ClubInfo');
 
+  var snapshot = await refTestprime.once('value');
+
+  if(snapshot.exists()) {
+    clubinfo = snapshot.val();
+  }
+  else {
+    clubbool = true;
+    clubinfo = "you suck";
+  }
+/*
   refTestprime.on(
       "value", function(snapshot) {
           if (snapshot.val() == null) {
@@ -116,12 +170,16 @@ function getClub(userInput) {
           console.log("Error: " + error.code);
       }
   );
+  */
 
   console.log(clubbool);
   if (clubbool == false) {
        var finalstring;
+       console.log(rating);
        finalstring = "Club Title: " + userInput + '</br>' + "Rating: " + rating + '</br>' + "Keyword: " + keyword + '</br>' + "Clubinfo: " + clubinfo + '</br>';
-       returnResult(rating,keyword,clubinfo);
+       //return finalstring;
+       //console.msg("poo");
+       returnResult(userInput,rating,keyword,clubinfo);
        return;
   }
   else {
