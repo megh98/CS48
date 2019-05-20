@@ -1,17 +1,22 @@
 const searchClub = document.querySelector('.search-btn');
 const clubInput = document.querySelector('.search-txt');
-const userInput = clubInput.value;
-
+// console.log(userInput);
+console.log("HI");
 searchClub.addEventListener('click', returnResult);
 
 function returnResult(rating, keyword, clubinfo) {
   var clubArray = new Array();
+  console.log("Before userInput in returnResult");
+  const userInput = clubInput.value;
   console.log(userInput);
   clubArray.push(userInput);
   clubArray.push(rating);
   console.log(rating);
   clubArray.push(keyword);
   clubArray.push(clubinfo);
+
+  console.log("After pushing everything");
+  console.log(clubArray);
   
   sessionStorage.setItem('club', JSON.stringify(clubArray));
   window.location.href = "search-result.html";
