@@ -2,11 +2,12 @@ const showcase = document.getElementById("display-profile");
 const club = JSON.parse(sessionStorage.getItem('club'));
 
 
+
 function showProfile(userInput,rating, keyword, clubinfo) {
     showcase.innerHTML = `
    
     <h1> ${userInput}  <\h1>
-    <p> The club rating is: ${rating} <\p>  
+    <p> The club rating is: ${rating} and the keyword is ${keyword} and club info is ${clubinfo} <\p>  
  
     <h1> ${userInput}  <\h1>
     <p> Advisor:  Mrs. Kleinknecht- Seventh and eighth graders who loved Battle of the Books 
