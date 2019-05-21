@@ -25,6 +25,8 @@ function returnResult(userInput,rating, keyword, clubinfo) {
 
 
 
+
+
 async function getClub() {
   const userInput = clubInput.value;
   console.log(userInput);
@@ -101,7 +103,7 @@ else {
   }
   else {
     clubbool = true;
-    rating = 1;
+    rating = -5;
   }
 /*
   refTestprime.once
