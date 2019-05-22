@@ -20,7 +20,18 @@ function returnResult(userInput,rating, keyword, clubinfo) {
   
   sessionStorage.setItem('club', JSON.stringify(clubArray));
   window.location.href = "search-result.html";
+  
 };
+
+function returnResult2(input) {
+  sessionStorage.setItem('club2', JSON.stringify(inputå));
+  window.location.href = "search-result.html";
+  
+};
+
+
+
+
 
 
 
@@ -204,6 +215,100 @@ else {
   */
 
   console.log(clubbool);
+
+      //console.log("Into false");
+  var finalstring;
+  console.log(rating);
+  finalstring = "Club Title: " + userInput + '</br>' + "Rating: " + rating + '</br>' + "Keyword: " + keyword + '</br>' + "Clubinfo: " + clubinfo + '</br>';
+       //return finalstring;
+       //console.msg("poo");
+  returnResult(userInput,rating,keyword,clubinfo);
+  returnResult2(matchclub("Cutting-Edge"));
+  return;
+  }
+
+  //catch(e) {
+  //}
+   //try {
+      
+  //}
+ 
+
+
+function matchclub(keyword) {
+  const userInput = keyword;
+  console.log(userInput);
+  var rating = 0;
+  var keyword = "Error";
+  var clubinfo;
+  //var firebase = require('firebase');
+  //var serviceAccount = require("./clubselector-2394a-firebase-adminsdk-oc2gl-21c4ff87c9.json");
+ if (firebase.apps.length === 0) 
+ {
+      //IF firebase is not connected, then connect
+      firebase.initializeApp
+      (
+        {
+            apiKey: "AIzaSyDrtl3qnLx_ZfdgxpUVy5XFvkXR4_f6_VU",
+            authDomain: "clubselector-2394a.firebaseapp.com",
+            databaseURL: "https://clubselector-2394a.firebaseio.com",
+            projectId: "clubselector-2394a",
+            storageBucket: "clubselector-2394a.appspot.com",
+            messagingSenderId: "1039301954159",
+            appId: "1:1039301954159:web:e458dc98ecad8303"
+        }
+      );
+  }
+  
+  
+  var ref = firebase.app().database().ref().child('clubs');
+
+  var output; 
+
+  ref.on('value', (snapshot) => {
+  snapshot.forEach((child) => {
+    console.log(child.val());
+    console.log(child("Keywords").child("Keyword"), child.val()); 
+    output = output + child.val() + '</br>';
+    //this.intVal.push(child.val());
+    //console.log("intVal",this.intVal);
+  });
+  });
+  returnResult2(output);
+  return output;
+
+}
+
+ /*
+  var refTestprime = refTest.child('Keywords').child('Keyword');
+  
+  var snapshot = await refTestprime.once('value');
+
+  if(snapshot.exists()) {
+    keyword = snapshot.val();
+  }
+  else {
+    clubbool = true;
+    keyword = "poo";
+  }
+
+
+
+  var refTestprime = refTest.child('ClubInfo');
+
+  var snapshot = await refTestprime.once('value');
+
+  if(snapshot.exists()) {
+    clubinfo = snapshot.val();
+  }
+  else {
+    clubbool = true;
+    clubinfo = "you suck";
+  }
+
+
+
+  console.log(clubbool);
   if (clubbool == false) {
       //console.log("Into false");
        var finalstring;
@@ -221,7 +326,6 @@ else {
   //catch(e) {
   //}
    //try {
-      
+      */
   //}
  
-}

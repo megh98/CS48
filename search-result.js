@@ -1,6 +1,18 @@
 const showcase = document.getElementById("display-profile");
 const club = JSON.parse(sessionStorage.getItem('club'));
+const club2 = JSON.parse(sessionStorage.getItem('club2'));
 
+function showProfile2(input) {
+        showcase.innerHTML = `
+   
+        <h1> ${input}  <\h1>
+        <p>  ${input} <\p>  
+
+
+        `;
+}
+
+    
 
 
 function showProfile(userInput,rating, keyword, clubinfo) {
@@ -43,3 +55,5 @@ function showProfile(userInput,rating, keyword, clubinfo) {
 }
 
 window.showProfile(club[0],club[1],club[2],club[3]);
+
+console.log(club2);
