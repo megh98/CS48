@@ -5,12 +5,12 @@ console.log("HI");
 searchClub.addEventListener('click', action);
 
 
-function returnResult(finalstring) {
-  console.log(finalstring);
-  var club = new Array();
-  club.push(finalstring);
-  sessionStorage.setItem('club', JSON.stringify(club));
-  window.location.href = "search-result.html";
+function returnResult(clubList) {
+  console.log(clubList);
+  // var club = new Array();
+  // club.push(finalstring);
+  sessionStorage.setItem('club', JSON.stringify(clubList));
+  // window.location.href = "search-result.html";
   
 };
 
@@ -75,7 +75,7 @@ async function getClub(userInput) {
   console.log(userInput.length);
 
 
-
+  var clubList = new Array();
  for (i = 0; i < userInput.length; i++) {
         var keyword = "";
        
@@ -151,6 +151,13 @@ async function getClub(userInput) {
         //console.log(rating);
         if (currentclubbool == true) {
           finalstring = finalstring + "Club Title: " + JSON.stringify(userInput[i]) + '</br>' + "Rating: " + JSON.stringify(rating) + '</br>' + "Keyword: " + JSON.stringify(keyword) + '</br>' + "Clubinfo: " + JSON.stringify(clubinfo) + '</br>';
+          
+          var title = JSON.stringify(userInput[i]);
+          var ratingReturn = JSON.stringify(rating);
+          var keywordReturn = JSON.stringify(keyword);
+          var clubinfoReturn = JSON.stringify(clubinfo);
+          
+          clubList[i] = new Array(title,ratingReturn,keywordReturn,clubinfoReturn);
         }
        //return finalstring;
        //console.msg("poo");
@@ -161,7 +168,7 @@ async function getClub(userInput) {
     //console.log("fine");
     //await Promise.all(promises);
     //console.log("fine");
-    returnResult(finalstring);
+    returnResult(clubList);
 
   
   return;
