@@ -1,27 +1,37 @@
 const searchClub = document.querySelector('.search-btn');
 const clubInput = document.querySelector('.search-txt');
-const userInput = clubInput.value;
+// console.log(userInput);
+console.log("HI");
+searchClub.addEventListener('click', action);
 
-searchClub.addEventListener('click', returnResult);
 
-function returnResult(rating, keyword, clubinfo) {
-  var clubArray = new Array();
-  console.log(userInput);
-  clubArray.push(userInput);
-  clubArray.push(rating);
-  console.log(rating);
-  clubArray.push(keyword);
-  clubArray.push(clubinfo);
+function returnResult(clubList) {
+  console.log(clubList);
+  // var club = new Array();
+  // club.push(finalstring);
+  sessionStorage.setItem('club', JSON.stringify(clubList));
+  window.location.href = "search-result.html";
   
-  sessionStorage.setItem('club', JSON.stringify(clubArray));
-  // window.location.href = "search-result.html";
 };
 
 
-function getClub(userInput) {
+function action() {
+  const userInput = clubInput.value;
   console.log(userInput);
+  matchclub(userInput);
+}
+
+
+
+
+
+
+
+async function getClub(userInput) {
+  for (i = 0; i < userInput.length; i++) {
+    console.log(userInput[i]);
+  }
   var rating = 0;
-  var keyword = "Error";
   var clubinfo;
   //var firebase = require('firebase');
   //var serviceAccount = require("./clubselector-2394a-firebase-adminsdk-oc2gl-21c4ff87c9.json");
@@ -48,117 +58,206 @@ function getClub(userInput) {
   //Go to the first node in the database
   var ref = db.ref('clubselector-2394a');
 
-
-  // if (firebase.apps.length === 0) {
-  //     var msg = 'didnt connect';
-  //     console.log(msg);
-  // }
-/* 
-ref.child(input1).once('value', function(snapshot) {
-  if (snapshot.exists()) {
-      console.log("doesn't exist");
-  }
-else {
-  console.log("exists");
-  return;
-}
-});
-*/
-  //Go the club's child which has value == userInput
-  var refTest = firebase.app().database().ref().child('clubs').child(userInput);
-  /*refTest.update(
-      {
-          Clubname: 'CASTRE',
-          Keyword: 'Hyper',
-          Rating: 10
-       
-      }
-  )
-  */
-
-  //refTestprime points to rating of the club
-  var refTestprime = refTest.child('Rating');
-
-
   var clubbool;
   clubbool = false;
 
+  var finalstring;
+  finalstring = "";
+
   var clubnoexist;
   clubnoexist = "Club doesn't exist" + '</br>';
+  console.log(userInput.length);
+  var counter;
+  counter = 0; 
+
+  var clubList = new Array();
+ for (i = 0; i < userInput.length; i++) {
+        var keyword = "";
+       
+
+       console.log("begin");
+       var currentclubbool;
+       currentclubbool = false;
+       var children;
+       children = userInput[i];
+       console.log(children);
+       console.log(typeof children);
+        var refTest = firebase.app().database().ref().child('clubs').child(children);
 
   
+        var refTestprime = refTest.child('Rating');
 
-  refTestprime.on
-  (
-      "value", function(snapshot) {
-          console.log("check to" + snapshot.exists());
-          if (snapshot.val() == null) {
-              clubbool = true;
-              console.log("doesn't exist");
-              return clubnoexist;
-          }  
-          else {
-              console.log(snapshot.val());
-              rating = snapshot.val();
-          }
-      }, 
-      function (error) {
-          console.log("Error: " + error.code);
-      }
-  );
 
-  var refTestprime = refTest.child('Keywords').child('Keyword');
+        var snapshot = await refTestprime.once('value');
+
+        if(snapshot.exists()) {
+          clubbool = true;
+            currentclubbool = true;
+            rating = snapshot.val();
+        }
+        else {
+            //console.log("club doesn't exist");
+            rating = -5;
+        }
+
+        var refTestprime = refTest.child('Keywords');
   
-  refTestprime.on(
-      "value", function(snapshot) {
-          if (snapshot.val() == null) {
-              return;
-          }
-          else {
-              console.log(snapshot.val());
-              keyword = snapshot.val();
-          }
-      }, 
-      function (error) {
-          console.log("Error: " + error.code);
-      }
-  );
+        var snapshot = await refTestprime.once('value');
 
-  var refTestprime = refTest.child('ClubInfo');
+        var keywordarray;
+        keywordarray = [];
+        finalkeyword = [];
 
-  refTestprime.on(
-      "value", function(snapshot) {
-          if (snapshot.val() == null) {
-              return;
-          }
-          else {
-              console.log(snapshot.val());
-              clubinfo = snapshot.val();
-          }
-      }, 
-      function (error) {
-          console.log("Error: " + error.code);
-      }
-  );
+        if(snapshot.exists()) {
+            clubbool = true;
+            currentclubbool = true;
+            keywordarray.push(snapshot.val());
+            for (var k in keywordarray[0]) {
+                //console.log(k);
+                //console.log(k);
+                var string;
+                string = k;
+                keyword = keyword + string + ","
+            }
+            keyword = keyword.slice(0,-1);
+        }
+            
+        else {
+            keyword = "poo";
+        }
 
-  console.log(clubbool);
-  if (clubbool == false) {
+
+
+        var refTestprime = refTest.child('ClubInfo');
+
+        var snapshot = await refTestprime.once('value');
+
+        if(snapshot.exists()) {
+            clubinfo = snapshot.val();
+        }
+        else {
+            clubinfo = "you suck";
+        }
+
+
+        //console.log(clubbool);
+
       //console.log("Into false");
-       var finalstring;
-       finalstring = "Club Title: " + userInput + '</br>' + "Rating: " + rating + '</br>' + "Keyword: " + keyword + '</br>' + "Clubinfo: " + clubinfo + '</br>';
+        //console.log(rating);
+        if (currentclubbool == true) {
+          finalstring = finalstring + "Club Title: " + JSON.stringify(userInput[i]) + '</br>' + "Rating: " + JSON.stringify(rating) + '</br>' + "Keyword: " + JSON.stringify(keyword) + '</br>' + "Clubinfo: " + JSON.stringify(clubinfo) + '</br>';
+          
+          var title = (userInput[i]);
+          var ratingReturn = JSON.stringify(rating);
+          var keywordReturn = JSON.stringify(keyword);
+          var clubinfoReturn = JSON.stringify(clubinfo);
+          
+          clubList[counter++] = new Array(title,ratingReturn,keywordReturn,clubinfoReturn);
+        }
        //return finalstring;
        //console.msg("poo");
-       returnResult(rating,keyword,clubinfo);
-       return;
-  }
-  else {
-    return clubnoexist;
+    }
+    if (clubbool == false) {
+        clubList[0] = new Array("club doesn't exist", -5, "", "");
+    }
+    //console.log("fine");
+    //await Promise.all(promises);
+    //console.log("fine");
+    returnResult(clubList);
+
+  
+  return;
+}
+
+ 
+  
+  async function matchclub(input) {
+    var iskeyword;
+    iskeyword = false;
+    input = '"' + input + '"';
+       var rating = 0;
+        var keyword = "Error";
+        var clubinfo;
+        //var firebase = require('firebase');
+        //var serviceAccount = require("./clubselector-2394a-firebase-adminsdk-oc2gl-21c4ff87c9.json");
+        if (firebase.apps.length === 0) {
+      //IF firebase is not connected, then connect
+                  firebase.initializeApp (
+                      {
+                          apiKey: "AIzaSyDrtl3qnLx_ZfdgxpUVy5XFvkXR4_f6_VU",
+                          authDomain: "clubselector-2394a.firebaseapp.com",
+                          databaseURL: "https://clubselector-2394a.firebaseio.com",
+                          projectId: "clubselector-2394a",
+                          storageBucket: "clubselector-2394a.appspot.com",
+                          messagingSenderId: "1039301954159",
+                          appId: "1:1039301954159:web:e458dc98ecad8303"
+                      }
+                  );
+        }
+  
+  
+  
+        var ref = firebase.app().database().ref().child('clubs');
+
+
+        var returnArr = [];
+        var counts = [];
+        var output = [];
+        var title = [];
+        var final = [];
+
+
+        await ref.once('value', function(snap) {
+            snap.forEach(function(item) {
+                  var itemVal = item.val();
+                  returnArr.push(itemVal);
+            }
+        ); 
+      });
+        for (i = 0; i < returnArr.length; i++) {
+           counts.push((returnArr[i]).Keywords);
+           title.push((returnArr[i]).Clubname);
+           //title.push((returnArr[i]).Clubname);
+        }
+        for (i = 0; i < counts.length; i++) {
+            //console.log(counts[i]);
+            var l = counts[i];
+            for (var k in l) {
+                //console.log(k);
+                //console.log(k);
+                var string;
+                string = JSON.stringify(k);
+                if (string == input) {
+                  console.log("yes");
+                  iskeyword = true;
+                  output.push(i);
+                }
+                else {
+                  continue;
+                }
+            }
+  
+        }
+        //console.log(output.length);
+        console.log("lenght is" + output.length);
+        if (iskeyword == true) {
+            for (i = 0; i < output.length; i++) {
+                    //console.log(output[i]);
+                    //console.log(JSON.stringify(title[output[i]]));
+                    final.push((title[output[i]]));
+                    console.log(title[output[i]]);
+            }
+        }
+        else {
+            input = input.substring(1, input.length -1);
+            final.push(input);
+        }
+        getClub(final);
+        
+            
+      return;
   }
 
-  //catch(e) {
-  //}
-   //try {
-      
-  //}
+
+
  
-}

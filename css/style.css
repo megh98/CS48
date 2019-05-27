@@ -154,13 +154,13 @@ p {
 
 /* Home Info */
 #home-info {
-  height: 400px;
+  height: 450px;
 }
 
 #home-info .info-img {
   float: left;
   width: 50%;
-  background: url('../img/ucsb.jpg') no-repeat;
+  background: url('../img/ucsb.jpg') no-repeat center center/cover;
   min-height: 100%;
 }
 
