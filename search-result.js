@@ -4,33 +4,38 @@ const club = JSON.parse(sessionStorage.getItem('club'));
 
 
 function showProfile(userInput,rating, keyword, clubinfo) {
-    showcase.innerHTML = `
-   
-    <h1> ${userInput}  <\h1>
-    <p> The club rating is: ${rating} and the keyword is ${keyword} and club info is ${clubinfo} <\p>  
- 
-    <h1> ${userInput}  <\h1>
-    <p> Advisor:  Mrs. Kleinknecht- Seventh and eighth graders who loved Battle of the Books 
-    in 6th grade can continue the fun with this reading club that meets once a week during lunc
-    h from about January to May. Students form teams of four to six members and choose to read 
-    books from an assigned list. After some practice battles, the real competi
-    tion begins. The top team in each grade goes on a field trip to compete against other s
-    chools. If you love to read, this is the club for you. <\p>  
-
-
-    <h1> ${userInput}  <\h1>
-    <p> 
-    Advisors:  Mrs. Albano & Mr. Michalowski  All students are invited to be a part of the
-     Spring Musical. Auditions typically take place in November/December with performances
-     in March/April. All students who audition are cast in the show and can participate.
-     Rehearsals are after school from 3:10-5:00 however times and days vary based upon 
-     roles. Students will have the opportunity to learn basic skills in acting, voice, 
-     choreography and scenic design. We perform in our auditorium to standing-room-only 
-     crowds!
-    <\p>  
-
-
-     `;
+    console.log("printing rating");
+    console.log(rating);
+    if (rating == -5) {
+        showcase.innerHTML += `
+        <div class="return-title">
+             <h1>Club Not Found</h1>
+        </div>
+        `;
+    }
+    else {
+        showcase.innerHTML += 
+       `<div class = "club-card">
+            <div class="club-header">
+                <div class="club-name">
+                    <h1> ${userInput}  </h1>
+                </div>
+                <div class="club-rating">
+                    <h1> The rating is: ${rating} </h1>
+                </div>
+            </div>
+            <div class="club-keyword">
+                <h1>Key Word: ${keyword} </h1>
+            </div>
+            <div class="club-info">
+                Club info is: ${clubinfo} </p> 
+            </div>
+        </div>
+       `;
+    }
 }
-
-window.showProfile(club[0],club[1],club[2],club[3]);
+var i;
+for (i = 0; i < club.length; i++) {
+    console.log("printed in loop");
+    window.showProfile(club[i][0],club[i][1],club[i][2],club[i][3]);
+}

@@ -1,7 +1,13 @@
+/* utility class */
+
 * {
   margin: 0;
   padding:0;
   /* box-sizing: border-box;  */
+}
+
+.clr {
+  clear: both;
 }
 
 /* Main Styling */
@@ -79,9 +85,10 @@ p {
   line-height: 1.7em;
 } */
 
+
 .search-box {
   position: absolute;
-  top: 20%; 
+  top: 50%; 
   left: 50%;
   transform: translate(-50%, -50%);
   background: #2f3640;
@@ -90,31 +97,6 @@ p {
   padding: 10px;
 }
 
-#display-profile{
-  padding: 30px;
-  border: 1px solid #ccc;
-  color: #fff;
-  background: #f7c08a;
-}
-
-#display-profile h1{
-  background: rgb(73, 66, 66);
-  padding: 30px;
-  text-align: center;
-  font-size: 40px;
-  /* border: 1px solid #ccc; */
-}
-
-#display-profile p{
-  font-size: 20px;
-  position: relative;
-  text-align: center;
-  padding: 50px;
-}
-
-#display-profile.clubcard{
-  background: #e84118;
-}
 
 
 .search-box:hover > .search-txt{
@@ -155,6 +137,58 @@ p {
   float: right;
 }
 
+
+
+/* search return page */
+#display-profile {
+  box-sizing: border-box;
+}
+
+.return-title{
+ padding: 20px;
+ text-align: center;
+}
+
+.club-card h1{
+  padding: 0;
+}
+
+.club-card {
+  display: flex;
+  flex-direction: column;
+  background: #555;
+  font-size: 16px;
+  margin: 10px;
+}
+
+.club-card .club-header {
+  display: flex;
+  padding: 5px 10px ;
+}
+
+.club-card .club-header .club-name {
+  width: 50%;
+}
+
+.club-card .club-header .club-rating {
+  width: 50%;
+  text-align: left;
+}
+
+.club-card .club-keyword {
+  padding: 5px 10px;
+  font-size: 16px;
+  text-align: left;
+}
+
+.club-card .club-info {
+  font-size: 20px;
+  line-height: 30px;
+  background: #f4f4f4;
+  padding: 10px;
+}
+
+
 /* Footer */
 #main-footer {
   position: absolute;
@@ -166,4 +200,3 @@ p {
   padding: 20px;
   
 }
-
