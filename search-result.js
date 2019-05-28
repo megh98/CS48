@@ -34,6 +34,7 @@ function showProfile(userInput,rating, keyword, clubinfo) {
        `;
     }
 }
+
 var i;
 for (i = 0; i < club.length; i++) {
     console.log("printed in loop");
