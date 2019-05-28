@@ -1,14 +1,12 @@
 const searchClub = document.querySelector('.search-btn');
 const clubInput = document.querySelector('.search-txt');
-// console.log(userInput);
+
 console.log("HI");
 searchClub.addEventListener('click', action);
 
 
 function returnResult(clubList) {
   console.log(clubList);
-  // var club = new Array();
-  // club.push(finalstring);
   sessionStorage.setItem('club', JSON.stringify(clubList));
   window.location.href = "search-result.html";
   
@@ -33,8 +31,7 @@ async function getClub(userInput) {
   }
   var rating = 0;
   var clubinfo;
-  //var firebase = require('firebase');
-  //var serviceAccount = require("./clubselector-2394a-firebase-adminsdk-oc2gl-21c4ff87c9.json");
+
  if (firebase.apps.length === 0) 
  {
       //IF firebase is not connected, then connect
@@ -71,7 +68,7 @@ async function getClub(userInput) {
   counter = 0; 
 
   var clubList = new Array();
- for (i = 0; i < userInput.length; i++) {
+  for (i = 0; i < userInput.length; i++) {
         var keyword = "";
        
 
@@ -92,12 +89,11 @@ async function getClub(userInput) {
 
         if(snapshot.exists()) {
           clubbool = true;
-            currentclubbool = true;
-            rating = snapshot.val();
+          currentclubbool = true;
+          rating = snapshot.val();
         }
         else {
-            //console.log("club doesn't exist");
-            rating = -5;
+          rating = -5;
         }
 
         var refTestprime = refTest.child('Keywords');
@@ -113,8 +109,6 @@ async function getClub(userInput) {
             currentclubbool = true;
             keywordarray.push(snapshot.val());
             for (var k in keywordarray[0]) {
-                //console.log(k);
-                //console.log(k);
                 var string;
                 string = k;
                 keyword = keyword + string + ","
@@ -138,12 +132,6 @@ async function getClub(userInput) {
         else {
             clubinfo = "you suck";
         }
-
-
-        //console.log(clubbool);
-
-      //console.log("Into false");
-        //console.log(rating);
         if (currentclubbool == true) {
           finalstring = finalstring + "Club Title: " + JSON.stringify(userInput[i]) + '</br>' + "Rating: " + JSON.stringify(rating) + '</br>' + "Keyword: " + JSON.stringify(keyword) + '</br>' + "Clubinfo: " + JSON.stringify(clubinfo) + '</br>';
           
@@ -154,17 +142,11 @@ async function getClub(userInput) {
           
           clubList[counter++] = new Array(title,ratingReturn,keywordReturn,clubinfoReturn);
         }
-       //return finalstring;
-       //console.msg("poo");
     }
     if (clubbool == false) {
         clubList[0] = new Array("club doesn't exist", -5, "", "");
     }
-    //console.log("fine");
-    //await Promise.all(promises);
-    //console.log("fine");
     returnResult(clubList);
-
   
   return;
 }
@@ -175,13 +157,11 @@ async function getClub(userInput) {
     var iskeyword;
     iskeyword = false;
     input = '"' + input + '"';
-       var rating = 0;
+        var rating = 0;
         var keyword = "Error";
         var clubinfo;
-        //var firebase = require('firebase');
-        //var serviceAccount = require("./clubselector-2394a-firebase-adminsdk-oc2gl-21c4ff87c9.json");
+
         if (firebase.apps.length === 0) {
-      //IF firebase is not connected, then connect
                   firebase.initializeApp (
                       {
                           apiKey: "AIzaSyDrtl3qnLx_ZfdgxpUVy5XFvkXR4_f6_VU",
@@ -194,8 +174,6 @@ async function getClub(userInput) {
                       }
                   );
         }
-  
-  
   
         var ref = firebase.app().database().ref().child('clubs');
 
@@ -217,14 +195,10 @@ async function getClub(userInput) {
         for (i = 0; i < returnArr.length; i++) {
            counts.push((returnArr[i]).Keywords);
            title.push((returnArr[i]).Clubname);
-           //title.push((returnArr[i]).Clubname);
         }
         for (i = 0; i < counts.length; i++) {
-            //console.log(counts[i]);
             var l = counts[i];
             for (var k in l) {
-                //console.log(k);
-                //console.log(k);
                 var string;
                 string = JSON.stringify(k);
                 if (string == input) {
@@ -238,12 +212,10 @@ async function getClub(userInput) {
             }
   
         }
-        //console.log(output.length);
+
         console.log("lenght is" + output.length);
         if (iskeyword == true) {
             for (i = 0; i < output.length; i++) {
-                    //console.log(output[i]);
-                    //console.log(JSON.stringify(title[output[i]]));
                     final.push((title[output[i]]));
                     console.log(title[output[i]]);
             }
@@ -253,8 +225,7 @@ async function getClub(userInput) {
             final.push(input);
         }
         getClub(final);
-        
-            
+                
       return;
   }
 
