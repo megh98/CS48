@@ -1,0 +1,222 @@
+{
+  "id": "9b80f3a3-96af-430c-8351-88bce38122c0",
+  "version": "2.0",
+  "name": "selenium_test",
+  "url": "https://clubselector-2394a.firebaseapp.com",
+  "tests": [{
+    "id": "e895bf57-e817-499d-872e-5928f64f892d",
+    "name": "test1",
+    "commands": [{
+      "id": "4e5e6eec-fd86-4723-9d56-597635ad0fdc",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "604ab0e9-3b3c-4431-afde-b287a7bee55c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1374x651",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bb89e4c0-7778-4e18-b383-b11547e1ba54",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=About Gaucho OrganAppZation",
+      "targets": [
+        ["linkText=About Gaucho OrganAppZation", "linkText"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//a[contains(text(),'About Gaucho OrganAppZation')]", "xpath:link"],
+        ["xpath=//div[@id='showcase']/div/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#home-info')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'About Gaucho OrganAppZation')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8c7dee76-7929-4a3f-907a-489143d1d6b8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Search",
+      "targets": [
+        ["linkText=Search", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Search')]", "xpath:link"],
+        ["xpath=//nav[@id='navbar']/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'search.html')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac326c23-552f-4642-8e89-27a22703f1fd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.search-txt",
+      "targets": [
+        ["css=.search-txt", "css:finder"],
+        ["xpath=//input[@name='']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "600b7f9c-0d41-496a-a0a2-34da0b1edd7f",
+      "comment": "",
+      "command": "type",
+      "target": "css=.search-txt",
+      "targets": [
+        ["css=.search-txt", "css:finder"],
+        ["xpath=//input[@name='']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "IEEE"
+    }, {
+      "id": "f668e9b7-9c57-42ca-98d1-4cbcdcdd24d7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fas",
+      "targets": [
+        ["css=.fas", "css:finder"],
+        ["xpath=//i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1e534ddb-e5d2-4506-8e95-e872cc778b89",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Search",
+      "targets": [
+        ["linkText=Search", "linkText"],
+        ["css=.current", "css:finder"],
+        ["xpath=//a[contains(text(),'Search')]", "xpath:link"],
+        ["xpath=//nav[@id='navbar']/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'search.html')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eab06561-154a-40a5-b492-905f8c5265b9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.search-txt",
+      "targets": [
+        ["css=.search-txt", "css:finder"],
+        ["xpath=//input[@name='']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3912cc66-5e0a-4739-950b-1ab0de777034",
+      "comment": "",
+      "command": "type",
+      "target": "css=.search-txt",
+      "targets": [
+        ["css=.search-txt", "css:finder"],
+        ["xpath=//input[@name='']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "chest club"
+    }, {
+      "id": "f33cf2aa-68b0-41e7-b902-4e601e8f2e14",
+      "comment": "",
+      "command": "click",
+      "target": "css=.search-btn",
+      "targets": [
+        ["css=.search-btn", "css:finder"],
+        ["xpath=//a[contains(@href, '#')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "61445d12-3b69-4424-be82-1d7fc30c9f8b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Search",
+      "targets": [
+        ["linkText=Search", "linkText"],
+        ["css=.current", "css:finder"],
+        ["xpath=//a[contains(text(),'Search')]", "xpath:link"],
+        ["xpath=//nav[@id='navbar']/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'search.html')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b6795670-082c-4da4-8aa6-0cf0bd2712fb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.search-txt",
+      "targets": [
+        ["css=.search-txt", "css:finder"],
+        ["xpath=//input[@name='']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1263309a-b5ed-40f7-a273-f22682c83d84",
+      "comment": "",
+      "command": "type",
+      "target": "css=.search-txt",
+      "targets": [
+        ["css=.search-txt", "css:finder"],
+        ["xpath=//input[@name='']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Hacks"
+    }, {
+      "id": "a6194e0b-56e5-4966-bee5-4eec25720c81",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fas",
+      "targets": [
+        ["css=.fas", "css:finder"],
+        ["xpath=//i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "00df934c-3ce1-4e24-a2be-fb40bc48c186",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Review",
+      "targets": [
+        ["linkText=Review", "linkText"],
+        ["css=li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Review')]", "xpath:link"],
+        ["xpath=//nav[@id='navbar']/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'review.html')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Review')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f546b968-4a85-495f-b42e-b011a3a26f1b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Rate a Club",
+      "targets": [
+        ["linkText=Rate a Club", "linkText"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Rate a Club')]", "xpath:link"],
+        ["xpath=//section[@id='testimonials']/div/div[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#')]", "xpath:href"],
+        ["xpath=//div[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Rate a Club')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "2c8f2b18-2556-4133-8eb8-be79c2b302bc",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["e895bf57-e817-499d-872e-5928f64f892d"]
+  }],
+  "urls": ["https://clubselector-2394a.firebaseapp.com/"],
+  "plugins": []
+}
