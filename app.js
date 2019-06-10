@@ -2,28 +2,17 @@ const searchClub = document.querySelector('.search-btn');
 const clubInput = document.querySelector('.search-txt');
 
 console.log("HI");
-searchClub.addEventListener('click', action);
-
+searchClub.addEventListener('click', function() {
+  const userInput = clubInput.value;
+  console.log(userInput);
+  matchclub(userInput);
+});
 
 function returnResult(clubList) {
   console.log(clubList);
   sessionStorage.setItem('club', JSON.stringify(clubList));
   window.location.href = "search-result.html";
-  
 };
-
-
-function action() {
-  const userInput = clubInput.value;
-  console.log(userInput);
-  matchclub(userInput);
-}
-
-
-
-
-
-
 
 async function getClub(userInput) {
   for (i = 0; i < userInput.length; i++) {
@@ -32,7 +21,7 @@ async function getClub(userInput) {
   var rating = 0;
   var clubinfo;
 
- if (firebase.apps.length === 0) 
+ if (firebase.apps.length === 0)
  {
       //IF firebase is not connected, then connect
       firebase.initializeApp
@@ -48,7 +37,7 @@ async function getClub(userInput) {
         }
       );
   }
-  
+
   //Go to the database in firebase
   var db = firebase.app().database();
 
@@ -65,12 +54,12 @@ async function getClub(userInput) {
   clubnoexist = "Club doesn't exist" + '</br>';
   console.log(userInput.length);
   var counter;
-  counter = 0; 
+  counter = 0;
 
   var clubList = new Array();
   for (i = 0; i < userInput.length; i++) {
         var keyword = "";
-       
+
 
        console.log("begin");
        var currentclubbool;
@@ -81,7 +70,7 @@ async function getClub(userInput) {
        console.log(typeof children);
         var refTest = firebase.app().database().ref().child('clubs').child(children);
 
-  
+
         var refTestprime = refTest.child('Rating');
 
 
@@ -97,7 +86,7 @@ async function getClub(userInput) {
         }
 
         var refTestprime = refTest.child('Keywords');
-  
+
         var snapshot = await refTestprime.once('value');
 
         var keywordarray;
@@ -115,7 +104,7 @@ async function getClub(userInput) {
             }
             keyword = keyword.slice(0,-1);
         }
-            
+
         else {
             keyword = "poo";
         }
@@ -134,12 +123,12 @@ async function getClub(userInput) {
         }
         if (currentclubbool == true) {
           finalstring = finalstring + "Club Title: " + JSON.stringify(userInput[i]) + '</br>' + "Rating: " + JSON.stringify(rating) + '</br>' + "Keyword: " + JSON.stringify(keyword) + '</br>' + "Clubinfo: " + JSON.stringify(clubinfo) + '</br>';
-          
+
           var title = (userInput[i]);
           var ratingReturn = JSON.stringify(rating);
           var keywordReturn = JSON.stringify(keyword);
           var clubinfoReturn = JSON.stringify(clubinfo);
-          
+
           clubList[counter++] = new Array(title,ratingReturn,keywordReturn,clubinfoReturn);
         }
     }
@@ -147,12 +136,12 @@ async function getClub(userInput) {
         clubList[0] = new Array("club doesn't exist", -5, "", "");
     }
     returnResult(clubList);
-  
+
   return;
 }
 
- 
-  
+
+
   async function matchclub(input) {
     var iskeyword;
     iskeyword = false;
@@ -174,7 +163,7 @@ async function getClub(userInput) {
                       }
                   );
         }
-  
+
         var ref = firebase.app().database().ref().child('clubs');
 
 
@@ -190,7 +179,7 @@ async function getClub(userInput) {
                   var itemVal = item.val();
                   returnArr.push(itemVal);
             }
-        ); 
+        );
       });
         for (i = 0; i < returnArr.length; i++) {
            counts.push((returnArr[i]).Keywords);
@@ -210,7 +199,7 @@ async function getClub(userInput) {
                   continue;
                 }
             }
-  
+
         }
 
         console.log("lenght is" + output.length);
@@ -225,10 +214,6 @@ async function getClub(userInput) {
             final.push(input);
         }
         getClub(final);
-                
+
       return;
   }
-
-
-
- 

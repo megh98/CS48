@@ -2,13 +2,16 @@
   "name": "organappzation",
   "version": "1.0.0",
   "description": "",
-  "main": "initialize.js",
+  "main": "app.js",
   "scripts": {
-    "test": "node initialize.js"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "firebase": "^5.10.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4"
   }
 }
