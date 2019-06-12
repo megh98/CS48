@@ -28,23 +28,23 @@ describe('test for search by club name', function(){
 
 
 describe('Test for search by keyword', function(){
-  it('app should return one club info for Coders SB', function(){
+  it('app should return club info for Coders SB', function(){
     assert.notEqual(matchclub('Hacks'), []);
   });
 
-  it('app should return one club info for Intelligence', function(){
+  it('app should return club info for Intelligence', function(){
     assert.notEqual(matchclub('Intelligence'), []);
   });
 
-  it('app should return one club info for Inclusive', function(){
+  it('app should return club info for Inclusive', function(){
     assert.notEqual(matchclub('BFOM'), []);
   });
 
-  it('app should return one club info for Inclusive', function(){
+  it('app should return club info for Inclusive', function(){
     assert.notEqual(matchclub('BFOM'), []);
   });
 
-  it('app should return one club info for Inclusive', function(){
+  it('app should return club info for Inclusive', function(){
     assert.notEqual(matchclub('Aceplla'), []);
   });
 
