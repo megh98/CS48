@@ -33,19 +33,19 @@ describe('Test for search by keyword', function(){
   });
 
   it('app should return one club info for Intelligence', function(){
-    assert.notEqual(getClub('Intelligence'), []);
+    assert.notEqual(matchclub('Intelligence'), []);
   });
 
   it('app should return one club info for Inclusive', function(){
-    assert.notEqual(getClub('BFOM'), []);
+    assert.notEqual(matchclub('BFOM'), []);
   });
 
   it('app should return one club info for Inclusive', function(){
-    assert.notEqual(getClub('BFOM'), []);
+    assert.notEqual(matchclub('BFOM'), []);
   });
 
   it('app should return one club info for Inclusive', function(){
-    assert.notEqual(getClub('Aceplla'), []);
+    assert.notEqual(matchclub('Aceplla'), []);
   });
 
 });
